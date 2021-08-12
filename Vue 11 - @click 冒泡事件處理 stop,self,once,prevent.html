@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<body>
+  <div id="all">
+    <ul @click="ulclick()">
+      <li @click.stop="liclick($event)">sdfg</li>
+      <li @click="liclick($event)">sdfg</li>
+    </ul>
+    <!-- click.self = 只接受點擊自己本身才觸發，冒泡事件不會影響到 -->
+    <ul @click.self="ulclick()">
+      <!-- click.stop 相當於 ev.stopPropagation(); -->
+      <li @click.stop="liclick($event)">aaaa</li>
+      
+      <!-- 直接觸發click 並且會冒泡向上 -->
+      <li @click="liclick($event)">bbbb</li>
+      
+      <!-- click.once 只接受點擊一次 -->
+      <li @click.once="liclick($event)">cccc</li>
+    </ul>
+    <!-- click.prevent 相當於 ev.preventDefault(); -->
+    <a href="https://www.google.com" @click.prevent="handlechangePage($event)">6666</a>
+  </div>
+</body>
+<script type="text/javascript">
+	var all = new Vue({
+    el:"#all",
+    methods:{
+      ulclick(){
+        console.log(5566);    
+      },
+      liclick(ev){
+        console.log(7788);
+      },
+      handlechangePage(ev){
+        //ev.preventDefault();
+        console.log(78999);
+      },
+    }
+  });
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<style type="text/css" media="screen">
+.red{
+  background-color: red;
+}
+
+.blue{
+  background-color: blue;
+  color: white;
+}
+
+.white{
+  background-color: white;
+  color: blue;
+}
+</style>
+<body>
+	<div id="box">
+		<!-- 指令 v-html 用於 顯示含有html tag 的data -->
+		<div v-html="myhtml"></div>
+		<!-- 指令 v-show 用於 顯示/隱藏 -->
+		<div v-show="myshow">動態顯示/隱藏</div>
+		<!-- 指令 v-if 用於 創建/刪除 -->
+		<div v-if="iscreated">動態顯示/刪除</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var all = new Vue({
+		el:"#box",
+	 	data:{
+		  	myhtml:"<a href='https://ip208139.ntcu.edu.tw/'>7788</a>",
+		    myshow:true,
+		    iscreated:true
+		}
+	});
+</script>
+</html>

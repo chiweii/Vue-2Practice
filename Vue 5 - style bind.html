@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<style type="text/css">
+	.red{
+	　　background-color: red;
+	}
+
+	.blue{
+	　　background-color: blue;
+	　　color: white;
+	}
+
+	.white{
+	　　background-color: white;
+	　　color: blue;
+	}
+</style>					
+<body>
+	<div id="box">
+	  <!-- v-on or @ 一樣意思 -->
+	  <button @click="colorChange()">change</button>
+	  
+	  <!-- 可以寫 : 或 v-bind: 都可以 -->
+	  <div :class="isActive? 'red':'blue'">我是動態的變色器</div>
+	  <!-- 無法動態增加 element -->
+	  <div v-bind:class="classobject">我是動態的變色器 對象寫法</div>
+	  <!-- 可以動態增加 array 值 -->
+	  <div :class="classarr">我是動態的變色器 數組寫法</div>
+	  
+	  <!-- 可以寫 : 或 v-bind: 都可以  v-bind:style -->
+	  <div :style="'background:'+(isActive?'red':'blue')">style 三幕寫法</div>
+	  
+	  <!-- bind class object -->
+	  <div :style="styleobj">style 對象寫法</div>
+	  
+	  <!-- bind class array -->
+	  <div :style="stylearr">style 數組寫法</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var all = new Vue({
+			el:"#box",
+	    data:{
+	    	isActive:true,
+	      classobject:{
+	      	good:true,
+	        better:false
+	      },
+	      classarr:["a","blue"],
+	      styleobj:{
+	      	background: 'red',
+	      },
+	      stylearr:[]
+	    },
+	    methods:{
+	    	colorChange(){
+	      	this.isActive = !this.isActive
+	      }
+	    }
+	});
+</script>
+</html>

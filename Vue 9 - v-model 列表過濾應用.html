@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<body>
+	<div id="box">
+		<input type="text" @input="handleInput(this.value)" v-model="mytext" />
+		<ul>
+			<li v-for="data in datalist">{{data}}</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+	var all = new Vue({
+	  el: "#box",
+	  data: {
+	    mytext: '',
+	    datalist: ['ab', 'b', 'c', 'd', 'e'],
+	    list: ['ab', 'b', 'c', 'd', 'e'],
+	  },
+	  methods: {
+	    handleInput() {
+	      /*filter 過濾*/
+	      var newlist = this.list.filter(item => item.indexOf(this.mytext) >= 0);
+	      /* console.log(newlist); */
+	      this.datalist = newlist
+	      console.log(this.datalist);
+	    }
+	  }
+	})
+</script>
+</html>

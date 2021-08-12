@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<body>
+  <div id="box">
+    <button @click="handleClick">
+      click1
+    </button>
+    <button @click="handleClick()">
+      click2
+    </button>
+    <button @click="isShow = !isShow">
+      click3
+    </button>
+    <div v-show="isShow">123123</div>
+  </div>
+</body>
+<script type="text/javascript">
+  var tt = new Vue({
+    el:'#box',
+    data:{
+      isShow: false
+    },
+    methods:{
+      handleClick(){
+        this.isShow = !this.isShow
+      }
+    }
+  });
+</script>
+</html>

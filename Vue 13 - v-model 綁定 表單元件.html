@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<body>
+<div id="box">
+  <div>
+    <!-- 綁定 input & textarea 給 v-model mytext -->
+    <input type="text" v-model="mytext"><br>
+    <textarea v-model="mytext" cols="30" rows="10">
+    </textarea>
+    <br>
+    <!-- 綁定 input checkbox 給 v-model isChecked -->
+    <input type="checkbox" v-model="isChecked"/>紀錄用戶名稱
+  </div>
+  <div>
+    {{ mytext }}
+  </div>
+  <div>
+    <p>你喜歡的運動?
+      <!-- 綁定v-model checkgroup(array) 到 input 多個checkbox  -->
+      <input type="checkbox" v-model="checkgroup" value="游泳"/>游泳
+      <input type="checkbox" v-model="checkgroup" value="跑步"/>跑步
+      <input type="checkbox" v-model="checkgroup" value="打球"/>打球
+    </p>
+  </div>
+  <!-- 把checkgroup 的(array) 值一個一個印出來，checkbox 打勾就印 -->
+  <li v-for="a in checkgroup"><button>{{a}}</button></li>
+  
+  <!-- 把 input radio 綁定到 v-model picker string，後續在印出來 -->
+  <div>
+    <p>你最喜歡的語言?
+      <input type="radio" v-model="picker" value="英語"/>英語
+      <input type="radio" v-model="picker" value="中文"/>中文
+      <input type="radio" v-model="picker" value="日語"/>日語
+    </p>
+  </div>
+  <div>
+    {{ picker }}
+  </div>
+</div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+	  el: "#box",
+	  data: {
+	    mytext: '',
+	    isChecked: true,
+	    checkgroup: [],
+	    todo: [
+	      '吃飯',
+	      '睡覺',
+	      '打東東'
+	    ],
+	    picker: '',
+	  },
+	});
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<body>
+	<div id="all">
+		<button @click="handleClick()">click</button>
+		<!-- 條件渲染1 -->
+		<div v-if="isCreated">有了一個商品</div>
+		<div v-else>您的購物車是空的</div>
+		<!-- 條件渲染1end -->
+
+		<!-- 條件渲染2 -->
+		<ul v-if="datalist.length">
+			<li v-for="data in datalist">
+			  {{ data }}
+			</li>
+		</ul>
+			<!-- 條件渲染3 -->
+			<div v-if="which === 1">111</div>
+			<div v-else-if="which === 2">222</div>
+			<div v-else>333</div>
+			<!-- 條件渲染3end -->
+		<div v-else>
+			購物車是空的
+		</div>
+		<!-- 條件渲染2end -->
+	</div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+	  el: "#all",
+	  data: {
+	    isCreated: false,
+	    datalist: [],
+	    which: 1,
+	  },
+	  methods: {
+	    handleClick() {
+	      this.isCreated = !this.isCreated
+	      this.datalist = ['威力彩', '大樂透']
+	    }
+	  }
+	})
+
+</script>
+</html>
